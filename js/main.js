@@ -14,23 +14,17 @@ const boxes = [
     { titulo: "Publicidad y Social Media", precio: 21800},
 ]
 
-//const descuento = 20
 let BoxesElegido = prompt("ingrese el boxes que desea adquirir \n1. Branding y Web Development. \n2. Publicidad y Social Media. ");
 
 console.log( boxes.find((boxes) => boxes.titulo === BoxesElegido ) );
 
+const porcentaje = 0.2;
 
-function aplicarPorcentaje(boxes, descuento) {
-    const resultado = [];
-    for (let i=0; i<boxes.length; i++){
-        const precio = boxes[i];
-        const procentajeAplicado = precio * (20/100);
-    resultado.push(porcentajeAplicado);
-    }
-    return resultado;
-}
-const numerosConPorcentajes = aplicarPorcentaje(boxes.length, 20);
+const actualizarBoxes = boxes.map(boxes =>{
+    const descontarPrecio = boxes.precio - (boxes.precio * porcentaje);
+    return {...boxes, precio: descontarPrecio};
+});
+console.log(actualizarBoxes);
 
-console.log(numerosConPorcentajes);
 
 
